@@ -1,0 +1,17 @@
+# Desktop control.
+#
+# Inserts one Host plugin. The plugin starts its own PowerShell agent on first
+# use and registers the desktop_* tools on ctx.tools; nothing else in the
+# composition needs to change.
+#
+# The row id matches the package name, which is the client-plugin convention and
+# keeps a single searchable name in Plugin Manager and in session logs.
+
+- insert:
+    - id: dsh-plugin-desktop-control
+      name: 'dsh-plugin-desktop-control'
+      config:
+        # How long an idle agent keeps running before it exits by itself.
+        idleMinutes: 120
+        # Upscale factor applied before OCR; 2 helps with small UI text.
+        ocrScale: 2

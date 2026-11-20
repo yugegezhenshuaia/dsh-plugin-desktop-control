@@ -1,0 +1,20 @@
+# Normalize all text to UTF-8 with LF line endings in the repository.
+# The PowerShell agent is ASCII-only by design; Chinese text lives in Markdown,
+# JSON locales, and the HTML test pages, all of which are UTF-8 without BOM.
+* text=auto eol=lf
+
+*.ps1 text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.zip binary

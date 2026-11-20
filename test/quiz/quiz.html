@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>2026 年安全知识测验</title>
+<style>
+  body { margin: 0; font-family: "Microsoft YaHei", sans-serif; background: #f2f4f8; color: #1f2937; }
+  .page { width: 940px; margin: 28px auto 60px; background: #fff; border-radius: 10px; padding: 32px 44px 44px; box-shadow: 0 3px 16px rgba(0,0,0,.10); }
+  h1 { font-size: 28px; margin: 0 0 6px; }
+  .sub { font-size: 16px; color: #6b7280; margin-bottom: 26px; }
+  .q { margin-bottom: 34px; }
+  .t { font-size: 21px; font-weight: 600; margin-bottom: 14px; line-height: 1.6; }
+  .opts label { display: block; font-size: 20px; line-height: 2.2; cursor: pointer; }
+  .opts input { width: 18px; height: 18px; margin-right: 10px; vertical-align: -2px; }
+  .submit { margin-top: 10px; font-size: 22px; padding: 14px 46px; border: none; border-radius: 8px; background: #16a34a; color: #fff; cursor: pointer; }
+  .submit:hover { background: #15803d; }
+  #result { margin-top: 30px; font-size: 22px; line-height: 1.9; }
+  #result .score { font-size: 34px; font-weight: 700; color: #0f766e; }
+  #result .ok { color: #15803d; }
+  #result .bad { color: #b91c1c; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>2026 年安全知识测验</h1>
+  <div class="sub">共 6 道单选题，每题 1 分，答完点击“提交答案”。</div>
+
+  <div class="q" data-q="1">
+    <div class="t">1. 中华人民共和国的首都是哪座城市？</div>
+    <div class="opts">
+      <label><input type="radio" name="q1" value="A">A. 上海</label>
+      <label><input type="radio" name="q1" value="B">B. 北京</label>
+      <label><input type="radio" name="q1" value="C">C. 广州</label>
+      <label><input type="radio" name="q1" value="D">D. 深圳</label>
+    </div>
+  </div>
+
+  <div class="q" data-q="2">
+    <div class="t">2. 水的化学式是什么？</div>
+    <div class="opts">
+      <label><input type="radio" name="q2" value="A">A. CO2</label>
+      <label><input type="radio" name="q2" value="B">B. H2O</label>
+      <label><input type="radio" name="q2" value="C">C. O2</label>
+      <label><input type="radio" name="q2" value="D">D. NaCl</label>
+    </div>
+  </div>
+
+  <div class="q" data-q="3">
+    <div class="t">3. 一年有多少个月？</div>
+    <div class="opts">
+      <label><input type="radio" name="q3" value="A">A. 10 个月</label>
+      <label><input type="radio" name="q3" value="B">B. 11 个月</label>
+      <label><input type="radio" name="q3" value="C">C. 12 个月</label>
+      <label><input type="radio" name="q3" value="D">D. 13 个月</label>
+    </div>
+  </div>
+
+  <div class="q" data-q="4">
+    <div class="t">4. 《红楼梦》的作者是谁？</div>
+    <div class="opts">
+      <label><input type="radio" name="q4" value="A">A. 曹雪芹</label>
+      <label><input type="radio" name="q4" value="B">B. 罗贯中</label>
+      <label><input type="radio" name="q4" value="C">C. 施耐庵</label>
+      <label><input type="radio" name="q4" value="D">D. 吴承恩</label>
+    </div>
+  </div>
+
+  <div class="q" data-q="5">
+    <div class="t">5. 9 乘以 7 等于多少？</div>
+    <div class="opts">
+      <label><input type="radio" name="q5" value="A">A. 56</label>
+      <label><input type="radio" name="q5" value="B">B. 63</label>
+      <label><input type="radio" name="q5" value="C">C. 72</label>
+      <label><input type="radio" name="q5" value="D">D. 81</label>
+    </div>
+  </div>
+
+  <div class="q" data-q="6">
+    <div class="t">6. 太阳从哪个方向升起？</div>
+    <div class="opts">
+      <label><input type="radio" name="q6" value="A">A. 东</label>
+      <label><input type="radio" name="q6" value="B">B. 南</label>
+      <label><input type="radio" name="q6" value="C">C. 西</label>
+      <label><input type="radio" name="q6" value="D">D. 北</label>
+    </div>
+  </div>
+
+  <button class="submit" id="submit">提交答案</button>
+
+  <div id="result" class="hidden"></div>
+</div>
+
+<script>
+  const ANSWERS = { q1: 'B', q2: 'B', q3: 'C', q4: 'A', q5: 'B', q6: 'A' };
+  document.getElementById('submit').addEventListener('click', () => {
+    let score = 0;
+    const lines = [];
+    for (const [name, right] of Object.entries(ANSWERS)) {
+      const picked = document.querySelector('input[name="' + name + '"]:checked');
+      const value = picked ? picked.value : '-';
+      const ok = value === right;
+      if (ok) score += 1;
+      lines.push('<div class="' + (ok ? 'ok' : 'bad') + '">' + name.replace('q', '第 ') + ' 题：选择 ' + value + (ok ? ' 正确' : ' 错误，正确答案 ' + right) + '</div>');
+    }
+    const box = document.getElementById('result');
+    box.classList.remove('hidden');
+    box.innerHTML = '<div class="score">得分 ' + score + '/6</div>' + lines.join('');
+    window.location.hash = 'scored';
+  });
+</script>
+</body>
+</html>

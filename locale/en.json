@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Desktop control",
+    "description": "Let the agent operate Windows applications: capture the screen, recognize text with the built-in OCR engine, click, type, manage windows, and read UI Automation.",
+    "detail": "docs/DETAIL.md"
+  }
+}

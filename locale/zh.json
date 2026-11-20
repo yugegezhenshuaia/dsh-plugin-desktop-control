@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "桌面操控",
+    "description": "让智能体直接操作 Windows 桌面：截屏、用系统自带 OCR 识字、点击、输入、管理窗口，并读取 UI Automation 控件树。",
+    "detail": "docs/DETAIL.zh.md"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "typing": "DSH 桌面代理 Hello 123",
+  "ocrCheck": "桌面代理",
+  "clipboard": "DSH 桌面代理剪贴板测试 中文",
+  "waitText": "得分 0 / 6",
+  "waitCompact": "得分0/6",
+  "waitLabelCheck": "得分",
+  "waitRegex": "得分\\s*\\d+\\s*/\\s*6",
+  "waitAbsent": "不存在的文本"
+}
